@@ -1,5 +1,7 @@
 # vimcp
 
+![vimcp](https://github.com/danieldugas/vimcp/raw/master/vimcp.gif "vimcp in action")
+
 Copy files in batch using vim.
 Similar to [vimv](https://github.com/thameera/vimv), but for copying.
 
