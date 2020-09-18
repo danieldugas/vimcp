@@ -1,0 +1,13 @@
+#!/bin/bash
+# Usage: vimrm [rm arguments, -i, --verbose, -u, etc]
+# file appears with commands
+# save and exit to run rm command
+FINDRESULTFILE=$(mktemp)
+CMDFILE=$(mktemp)
+
+
+
+find "$(pwd)/" -maxdepth 1 -type f -fprintf "$FINDRESULTFILE" "keep $@ %p\n"
+vim "$CMDFILE" --cmd "silent read $FINDRESULTFILE" --cmd "g/^$/d"
+# yesno "rm $(cat $CMDFILE | wc -l) files?" 'y' &&
+source $CMDFILE && echo "$(cat $CMDFILE | wc -l) files erased."
